@@ -6,7 +6,8 @@ export type Category =
   | 'management'
   | 'sns-marketing'
   | 'interview'
-  | 'next2000';
+  | 'next2000'
+  | 'weekly-report';
 
 export interface Article {
   id: string;
@@ -38,6 +39,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { slug: 'sns-marketing', label: 'SNS・集客', color: 'teal', bgColor: 'bg-teal-100', textColor: 'text-teal-700' },
   { slug: 'interview', label: 'インタビュー', color: 'gray', bgColor: 'bg-gray-100', textColor: 'text-gray-700' },
   { slug: 'next2000', label: 'NEXT2000', color: 'black', bgColor: 'bg-gray-900', textColor: 'text-white' },
+  { slug: 'weekly-report', label: '週刊レポート', color: 'red', bgColor: 'bg-red-100', textColor: 'text-red-700' },
 ];
 
 export function getCategoryMeta(slug: Category): CategoryMeta {
