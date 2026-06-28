@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NEXT BEAUTY JOURNAL
 
-## Getting Started
+美容業界の「今」がわかる情報メディア。美容学生・美容師・サロン経営者が毎日ひとつ学べる場所。
 
-First, run the development server:
+## 起動方法
 
 ```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動 (http://localhost:3000)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 本番ビルド
+npm run build
+
+# 本番サーバーの起動
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ディレクトリ構成
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+next-beauty-journal/
+├── app/                    # Next.js App Router
+│   ├── page.tsx            # トップページ
+│   ├── layout.tsx          # 共通レイアウト
+│   ├── globals.css         # グローバルスタイル
+│   ├── articles/
+│   │   ├── page.tsx        # 記事一覧ページ
+│   │   └── [slug]/
+│   │       └── page.tsx    # 記事詳細ページ
+│   ├── category/
+│   │   └── [slug]/
+│   │       └── page.tsx    # カテゴリーページ
+│   ├── about/
+│   │   └── page.tsx        # Aboutページ
+│   └── contact/
+│       └── page.tsx        # お問い合わせページ
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx      # ヘッダーコンポーネント
+│   │   └── Footer.tsx      # フッターコンポーネント
+│   └── article/
+│       ├── ArticleCard.tsx  # 記事カードコンポーネント（3バリアント）
+│       └── CategoryBadge.tsx # カテゴリーバッジ
+├── data/
+│   └── articles.ts         # 記事データ（ローカル管理）
+└── types/
+    └── article.ts          # 型定義・カテゴリーメタ情報
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 記事データの管理
 
-## Learn More
+現在は `data/articles.ts` でローカル管理しています。
 
-To learn more about Next.js, take a look at the following resources:
+### CMS連携時の拡張案
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`data/articles.ts` の関数を以下のように差し替えることで、CMSへの移行が可能です：
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+// Contentful の例
+export async function getAllArticles(): Promise<Article[]> {
+  const client = createClient({ space: process.env.CONTENTFUL_SPACE_ID!, accessToken: process.env.CONTENTFUL_ACCESS_TOKEN! });
+  const entries = await client.getEntries({ content_type: 'article' });
+  return entries.items.map(mapContentfulToArticle);
+}
 
-## Deploy on Vercel
+// microCMS の例
+export async function getAllArticles(): Promise<Article[]> {
+  const data = await fetch('https://YOUR_DOMAIN.microcms.io/api/v1/articles', {
+    headers: { 'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY! },
+  }).then(r => r.json());
+  return data.contents;
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Article型
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```typescript
+interface Article {
+  id: string;
+  title: string;
+  slug: string;
+  category: Category;
+  excerpt: string;
+  content: string;
+  thumbnail: string;
+  publishedAt: string;
+  author: string;
+  tags: string[];
+}
+```
+
+## カテゴリー
+
+| slug | ラベル | カラー |
+|------|--------|--------|
+| beauty-students | 美容学生向け | ピンク |
+| salon-info | サロン情報 | ブルー |
+| products-makers | 商材・メーカー情報 | グリーン |
+| trends | トレンド | パープル |
+| management | 経営・採用 | オレンジ |
+| sns-marketing | SNS・集客 | ティール |
+| interview | インタビュー | グレー |
+| next2000 | NEXT2000 | ブラック |
+
+## 技術スタック
+
+- **Next.js** (App Router)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **React 19**

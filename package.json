@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate": "npx ts-node --project tsconfig.scripts.json scripts/generate-article.ts",
+    "add-article": "npx ts-node --project tsconfig.scripts.json scripts/add-article.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
+    "@google/generative-ai": "^0.24.1",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"

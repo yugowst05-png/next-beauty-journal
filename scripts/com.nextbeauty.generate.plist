@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.nextbeauty.generate</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/node</string>
+    <string>/usr/local/lib/node_modules/npm/bin/npm-cli.js</string>
+    <string>run</string>
+    <string>generate</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/tomitayugo/next-beauty-journal</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ANTHROPIC_API_KEY</key>
+    <string>YOUR_API_KEY_HERE</string>
+    <key>PATH</key>
+    <string>/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <!-- 毎日 7:00 AM に実行 -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>7</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/tomitayugo/next-beauty-journal/logs/generate.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/tomitayugo/next-beauty-journal/logs/generate-error.log</string>
+</dict>
+</plist>
