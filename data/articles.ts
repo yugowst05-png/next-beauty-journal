@@ -257,7 +257,7 @@ NEXT2000には、美容師・美容学生・サロン経営者など幅広い方
 ## まとめ
 
 メンズ美容は「特別なニーズ」から「日常のケア」へと変わりつつあります。今のうちから対応したサロンが優位に立てるでしょう。`,
-    thumbnail: '/images/article-7.jpg',
+    thumbnail: '/images/2026-06-26-mens-beauty-market-expansion.jpg',
     publishedAt: '2026-06-26',
     author: 'NEXT BEAUTY編集部',
     tags: ['メンズ美容', '市場', 'サロン戦略'],
