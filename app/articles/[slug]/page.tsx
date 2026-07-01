@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getArticleBySlug, getAllArticles, getRelatedArticles } from '@/data/articles';
 import { getCategoryMeta } from '@/types/article';
 import ArticleCard from '@/components/article/ArticleCard';
@@ -101,9 +102,15 @@ export default async function ArticleDetailPage({ params }: Props) {
       </div>
 
       {/* Thumbnail */}
-      <div className="aspect-[16/9] bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg mb-10 flex items-center justify-center">
-        <span className="text-white/20 text-5xl font-bold tracking-widest">NBJ</span>
-      </div>
+      {article.thumbnail ? (
+        <div className="aspect-[16/9] relative rounded-lg mb-10 overflow-hidden">
+          <Image src={article.thumbnail} alt={article.title} fill className="object-cover" unoptimized />
+        </div>
+      ) : (
+        <div className="aspect-[16/9] bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg mb-10 flex items-center justify-center">
+          <span className="text-white/20 text-5xl font-bold tracking-widest">NBJ</span>
+        </div>
+      )}
 
       {/* Content */}
       <div className="prose-beauty mb-12">
