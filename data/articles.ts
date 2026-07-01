@@ -224,7 +224,7 @@ NEXT2000には、美容師・美容学生・サロン経営者など幅広い方
 ## まとめ
 
 都市か地方かではなく、自分がどんな美容師になりたいかで選ぶことが大切です。地方サロンには、それだけの価値があります。`,
-    thumbnail: '/images/article-6.jpg',
+    thumbnail: '/images/working-in-local-salon.png',
     publishedAt: '2026-06-25',
     author: 'NEXT BEAUTY編集部',
     tags: ['地方', 'サロン', 'キャリア'],
