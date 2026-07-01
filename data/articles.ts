@@ -132,7 +132,7 @@ const staticArticles: Article[] = [
 焦って決める必要はありません。
 
 実際にサロンを見て、スタッフと話し、自分自身が「ここで成長したい」と思える場所を選ぶことが、充実した美容師人生への第一歩になります。`,
-    thumbnail: '/images/article-1.jpg',
+    thumbnail: '/images/salon-selection-5-points.png',
     publishedAt: '2026-06-20',
     author: 'NEXT BEAUTY編集部',
     tags: ['美容学生', '就職', 'サロン選び'],
