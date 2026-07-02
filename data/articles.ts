@@ -502,7 +502,7 @@ NEXT2000は、その一歩に光を当て、挑戦する人がもっと挑戦し
 もしあなたの周りに、「本気で何かに挑戦している人」がいたら、ぜひ教えてください。
 
 その挑戦が、誰かの未来を変えるきっかけになるかもしれません。`,
-    thumbnail: '/images/article-5.jpg',
+    thumbnail: '/images/next2000.png',
     publishedAt: '2026-06-24',
     author: 'NEXT BEAUTY編集部',
     tags: ['NEXT2000', 'プロジェクト', '次世代', '挑戦'],
